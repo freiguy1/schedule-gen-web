@@ -1,0 +1,17 @@
+[package]
+name = "schedule-gen-web"
+version = "0.0.1"
+authors = ["Ethan Frei <ethan.frei@gmail.com>"]
+
+[dependencies.nickel]
+
+git = "https://github.com/nickel-org/nickel.rs.git"
+
+[dependencies.schedule_gen]
+
+git = "https://github.com/freiguy1/schedule-gen-rs"
+
+[dependencies]
+
+rustc-serialize = "*"
+
