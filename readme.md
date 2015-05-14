@@ -8,7 +8,7 @@
 ### Instructions:
 1. Clone repo: `git clone https://github.com/freiguy1/schedule-gen-web`
 2. Run server: `cd schedule-gen-web && cargo run`
-3. Post a json league specification to http://localhost:3000; an example spec if provided below
+3. Post a json league specification to http://localhost:3000; an example spec is provided [below](#example-league-specification)
 4. ...
 5. Profit
 
