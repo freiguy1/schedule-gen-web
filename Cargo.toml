@@ -14,4 +14,3 @@ git = "https://github.com/freiguy1/schedule-gen-rs"
 [dependencies]
 
 rustc-serialize = "*"
-
