@@ -1,10 +1,12 @@
 #[macro_use] extern crate nickel;
 extern crate schedule_gen;
 extern crate rustc_serialize;
+extern crate hyper;
 
 mod contracts;
 mod api_controller;
 
+use hyper::header::Location;
 use nickel::Nickel;
 use nickel::router::http_router::HttpRouter;
 
@@ -14,13 +16,10 @@ fn main() {
     let mut router = Nickel::router();
     api_controller::ApiController::initialize(&mut router);
     router.get("**", middleware! { |request, mut response| 
-        response.set_status(nickel::status::StatusCode::TemporaryRedirect);
-        response.origin.headers_mut().set_raw("location", vec![b"https://github.com/freiguy1/schedule-gen-web".to_vec()]);
-        return response.send("");
+        response.origin.headers_mut().set(Location("https://github.com/freiguy1/schedule-gen-web".into()));
+        (nickel::status::StatusCode::TemporaryRedirect, "")
     });
     
-    /*(nickel::status::StatusCode::TemporaryRedirect, "Redirecting to github", vec!["https://github.com/freiguy1/schedule-gen-web"])));
-     */
     server.utilize(router);
     server.listen("0.0.0.0:3000");
 }
