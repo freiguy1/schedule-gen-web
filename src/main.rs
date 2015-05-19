@@ -21,7 +21,7 @@ fn main() {
     });
     
     server.utilize(router);
-    server.listen("0.0.0.0:3000");
+    server.listen("0.0.0.0:6767");
 }
 
 
