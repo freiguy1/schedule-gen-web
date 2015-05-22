@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="ScheduleGenApp">
     <head>
+    <meta name="viewport" content="initial-scale=1">
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">
         <title>
             League Schedule Generator
