@@ -27,7 +27,7 @@ fn main() {
 
     router.get("/", middleware! { |_req, res|
         let data = HashMap::<&str, &str>::new();
-        return res.render("templates/index.tpl", &data);
+        return res.render("templates/index.tpl.html", &data);
     });
 
     // router.get("/assets/*", StaticFilesHandler::new("assets/"));
