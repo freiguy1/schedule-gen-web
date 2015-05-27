@@ -18,9 +18,15 @@ app.controller('AppCtrl', function ($scope) {
     };
 
     $scope.addTeam = function() { 
+        var newId = 0;
+
+        if ($scope.teams.length != 0) {
+            newId = $scope.teams[$scope.teams.length - 1].id + 1;
+        }
+
         $scope.teams.push({ 
             name: '',
-            id: $scope.teams[$scope.teams.length - 1].id + 1 
+            id: newId
         });
     };
 
@@ -41,11 +47,21 @@ app.controller('AppCtrl', function ($scope) {
     };
 
     $scope.addLocation = function() { 
+        var newId = 0;
+
+        if ($scope.locations.length != 0) {
+            newId = $scope.locations[$scope.locations.length - 1].id + 1;
+        }
+
         $scope.locations.push({ 
             name: '',
-            id: $scope.locations[$scope.locations.length - 1].id + 1 
+            id: newId
         });
     };
+
+    // START AND END DATES
+    $scope.startDate = null;
+    $scope.endDate = null;
 
 
 });
