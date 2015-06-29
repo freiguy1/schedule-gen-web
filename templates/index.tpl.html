@@ -15,7 +15,7 @@
                     <h2><span>Teams</span></h2>
                     <span flex></span>
                     <md-button aria-label="add team" ng-click="addTeam()" class="md-icon-button">
-                        <ng-md-icon icon="add" size="40" style="fill: lightgreen;"></md-icon>
+                        <ng-md-icon icon="add" size="40" style="fill: lightgreen;"></ng-md-icon>
                     </md-button>
                 </div>
             </md-toolbar>
@@ -26,7 +26,7 @@
                     <input ng-model="team.name">
                 </md-input-container>
                 <md-button aria-label="some label" ng-click="removeTeam(team.id)" class="md-icon-button">
-                    <ng-md-icon icon="remove" size="40" style="fill: red;"></md-icon>
+                    <ng-md-icon icon="remove" size="40" style="fill: red;"></ng-md-icon>
                 </md-button>
             </div>
 
@@ -36,18 +36,18 @@
                     <h2><span>Locations</span></h2>
                     <span flex></span>
                     <md-button aria-label="add location" ng-click="addLocation()" class="md-icon-button">
-                        <ng-md-icon icon="add" size="40" style="fill: lightgreen;"></md-icon>
+                        <ng-md-icon icon="add" size="40" style="fill: lightgreen;"></ng-md-icon>
                     </md-button>
                 </div>
             </md-toolbar>
 
             <div layout="row" ng-repeat="location in locations track by $index">
                 <md-input-container style="flex-grow: 1;">
-                    <label>Team Name</label>
+                    <label>Location</label>
                     <input ng-model="location.name">
                 </md-input-container>
                 <md-button aria-label="some label" ng-click="removeLocation(location.id)" class="md-icon-button">
-                    <ng-md-icon icon="remove" size="40" style="fill: red;"></md-icon>
+                    <ng-md-icon icon="remove" size="40" style="fill: red;"></ng-md-icon>
                 </md-button>
             </div>
 
@@ -76,6 +76,30 @@
                     <md-option value="Friday">Friday</md-option>
                     <md-option value="Saturday">Saturday</md-option>
                 </md-select>
+            </div>
+
+            <!-- TIMES -->
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2><span>Times of day</span></h2>
+                    <span flex></span>
+                    <md-button aria-label="add time" ng-click="addTime()" class="md-icon-button">
+                        <ng-md-icon icon="add" size="40" style="fill: lightgreen;"></ng-md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+
+            <div layout="row" ng-repeat="time in times track by $index">
+                <md-input-container flex>
+                    <label>Time of day</label>
+                    <input type="time" ng-model="time.time">
+                </md-input-container>
+                <md-select flex placeholder="Valid Locations" ng-model="time.locations" multiple="true">
+                    <md-option ng-repeat="location in locationOptions" value="{{location.id}}">{{location.name}}</md-option>
+                </md-select>
+                <md-button aria-label="some label" ng-click="removeTime(time.id)" class="md-icon-button">
+                    <ng-md-icon icon="remove" size="40" style="fill: red;"></ng-md-icon>
+                </md-button>
             </div>
 
         </div>

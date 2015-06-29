@@ -30,8 +30,6 @@ fn main() {
         return res.render("templates/index.tpl.html", &data);
     });
 
-    // router.get("/assets/*", StaticFilesHandler::new("assets/"));
-
     server.utilize(StaticFilesHandler::new("public/"));
 
     server.utilize(router);

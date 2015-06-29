@@ -63,6 +63,34 @@
         $scope.startDate = null;
         $scope.endDate = null;
 
+        // TIMES
+        $scope.times= [ 
+            { time: '', id: 0 , locationOptions: $scope.locations, locations: [] },
+            { time: '', id: 1 , locationOptions: $scope.locations, locations: [] }];
 
+        $scope.removeTime = function(id) {
+            var oldTimes= $scope.times;
+            $scope.times = [];
+            angular.forEach(oldTimes, function(time) {
+                if(time.id != id) {
+                    $scope.times.push(time);
+                }
+            });
+        };
+
+        $scope.addTime = function() { 
+            var newId = 0;
+
+            if ($scope.times.length != 0) {
+                newId = $scope.times[$scope.times.length - 1].id + 1;
+            }
+
+            $scope.times.push({ 
+                time: '',
+                id: newId,
+                locationOptions: $scope.locations,
+                locations: []
+            });
+        };
     });
 })();
