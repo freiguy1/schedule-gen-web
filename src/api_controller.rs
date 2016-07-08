@@ -16,7 +16,7 @@ impl ApiController{
             let league_spec = match request.json_as::<::contracts::LeagueSpec>() {
                 Ok(league_spec) => league_spec,
                 Err(error) => {
-                    response.set_status(BadRequest);
+                    response.set(BadRequest);
                     return response.send(rustc_serialize::json::encode(&vec![error.description()]).unwrap());
                 }
             };
@@ -24,7 +24,7 @@ impl ApiController{
             let team_events = match schedule_gen::generate_games(&league_spec.to_lib_type()) {
                 Ok(team_events) => team_events,
                 Err(errors) => {
-                    response.set_status(BadRequest);
+                    response.set(BadRequest);
                     return response.send(rustc_serialize::json::encode(&errors).unwrap());
                 }
             };
@@ -37,7 +37,7 @@ impl ApiController{
                 }
             }
             let game_dates: Vec<::contracts::GameDay> = grouped_team_events.into_iter().map(|group| ::contracts::GameDay::from_lib_type(group).ok().unwrap()).collect();
-            response.content_type(MediaType::Json);
+            response.set(MediaType::Json);
             rustc_serialize::json::encode(&game_dates).unwrap()
         });
 

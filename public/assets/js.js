@@ -1,5 +1,9 @@
 (function(){
     var app = angular.module('ScheduleGenApp', ['ngMaterial', 'ngMdIcons']);
+    app.config(function($interpolateProvider) {
+        $interpolateProvider.startSymbol('[[');
+        $interpolateProvider.endSymbol(']]');
+    });
 
     app.controller('AppCtrl', function ($scope) {
         // TEAMS

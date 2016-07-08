@@ -94,8 +94,8 @@
                     <label>Time of day</label>
                     <input type="time" ng-model="time.time">
                 </md-input-container>
-                <md-select flex placeholder="Valid Locations" ng-model="time.locations" multiple="true">
-                    <md-option ng-repeat="location in locationOptions" value="{{location.id}}">{{location.name}}</md-option>
+                <md-select flex placeholder="Valid Locations" ng-model="time.locations" multiple="true" >
+                    <md-option ng-repeat="location in locations" value="[[location.id]]">[[location.name]]</md-option>
                 </md-select>
                 <md-button aria-label="some label" ng-click="removeTime(time.id)" class="md-icon-button">
                     <ng-md-icon icon="remove" size="40" style="fill: red;"></ng-md-icon>

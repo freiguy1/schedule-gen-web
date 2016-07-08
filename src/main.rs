@@ -7,8 +7,8 @@ mod contracts;
 mod api_controller;
 
 use hyper::header::Location;
-use nickel::{ StaticFilesHandler, Nickel };
-use nickel::router::http_router::HttpRouter;
+use nickel::{ StaticFilesHandler, Nickel, HttpRouter };
+use nickel::status::StatusCode;
 use std::collections::HashMap;
 
 const GITHUB_URL: &'static str = "https://github.com/freiguy1/schedule-gen-web";
@@ -20,9 +20,10 @@ fn main() {
     // Enable Router
     let mut router = Nickel::router();
     api_controller::ApiController::initialize(&mut router);
-    router.get("/github", middleware! { |request, mut response| 
-        response.origin.headers_mut().set(Location(GITHUB_URL.into()));
-        (nickel::status::StatusCode::TemporaryRedirect, "")
+    router.get("/github", middleware! { |_, mut response| 
+        response.set(StatusCode::PermanentRedirect)
+            .set(Location(GITHUB_URL.into()));
+        ""
     });
 
     router.get("/", middleware! { |_req, res|

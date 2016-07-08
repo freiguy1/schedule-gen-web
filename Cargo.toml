@@ -15,4 +15,4 @@ git = "https://github.com/freiguy1/schedule-gen-rs"
 
 rustc-serialize = "*"
 
-hyper = "=0.3"
+hyper = "=0.8"
