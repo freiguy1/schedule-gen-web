@@ -69,8 +69,7 @@
 
         // TIMES
         $scope.times= [ 
-            { time: '', id: 0 , locationOptions: $scope.locations, locations: [] },
-            { time: '', id: 1 , locationOptions: $scope.locations, locations: [] }];
+            { time: '', id: 0 , locations: [] }];
 
         $scope.removeTime = function(id) {
             var oldTimes= $scope.times;
@@ -92,7 +91,6 @@
             $scope.times.push({ 
                 time: '',
                 id: newId,
-                locationOptions: $scope.locations,
                 locations: []
             });
         };
